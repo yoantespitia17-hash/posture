@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PosturaActiva | Tu Salud</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --p: #4a90e2; --s: #58c2b1; --bg: #f4f7f6; --text: #2c3e50; }
+        body { font-family: 'Poppins', sans-serif; margin: 0; background: var(--bg); color: var(--text); display: flex; flex-direction: column; align-items: center; }
+        header { background: linear-gradient(135deg, var(--p), var(--s)); color: white; width: 100%; text-align: center; padding: 30px 0; border-radius: 0 0 30px 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .container { width: 90%; max-width: 500px; margin-top: 20px; }
+        .card { background: white; padding: 20px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 20px; border: 1px solid #eee; }
+        h1 { margin: 0; font-size: 1.5rem; }
+        h2 { color: var(--p); font-size: 1.1rem; margin-top: 0; }
+        .btn { background: var(--p); color: white; border: none; padding: 15px; width: 100%; border-radius: 12px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .btn:active { transform: scale(0.98); }
+        .ex-item { display: flex; align-items: center; margin-bottom: 15px; background: #fafafa; padding: 10px; border-radius: 10px; }
+        .ex-icon { font-size: 2rem; margin-right: 15px; }
+        .ex-txt { font-size: 0.9rem; }
+        footer { font-size: 0.7rem; opacity: 0.6; margin: 20px 0; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🌿 Postura Activa</h1>
+    <p style="margin:5px 0 0; opacity:0.9;">¡Endereza tu espalda!</p>
+</header>
+
+<div class="container">
+    <div class="card">
+        <h2>🔔 Recordatorio</h2>
+        <p>Haz clic para recibir una alerta en el navegador en 30 min.</p>
+        <button class="btn" onclick="activar()">Activar Alerta</button>
+    </div>
+
+    <div class="card">
+        <h2>🧘 Ejercicios Clave</h2>
+        <div class="ex-item">
+            <span class="ex-icon">🦒</span>
+            <div class="ex-txt"><strong>Cuello:</strong> Oreja al hombro 15s por lado.</div>
+        </div>
+        <div class="ex-item">
+            <span class="ex-icon">👐</span>
+            <div class="ex-txt"><strong>Pecho:</strong> Abre brazos y estira hacia atrás.</div>
+        </div>
+        <div class="ex-item">
+            <span class="ex-icon">🔄</span>
+            <div class="ex-txt"><strong>Hombros:</strong> 10 círculos hacia atrás.</div>
+        </div>
+    </div>
+</div>
+
+<footer>Proyecto Postura • Escanea y Mejora</footer>
+
+<script>
+    function activar() {
+        if (!("Notification" in window)) {
+            alert("Tu navegador no soporta notificaciones, pero ¡recuerda sentarte bien!");
+            return;
+        }
+        Notification.requestPermission().then(perm => {
+            if(perm === "granted") {
+                alert("¡Recordatorio activado! No cierres esta pestaña.");
+                setTimeout(() => {
+                    new Notification("¡REVISA TU POSTURA!", { body: "Hombros atrás y espalda recta.", icon: "https://cdn-icons-png.flaticon.com/512/1553/1553955.png" });
+                }, 1800000); 
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
